@@ -6,7 +6,7 @@
 # See http://www.neilmiddleton.com/deploying-to-heroku-from-travis-ci/
 #
 
-HEROKU_APP_NAME="movie-database-node"
+HEROKU_APP_NAME="movie-database-team2"
 
 if [ "$HEROKU_API_KEY" == "" ]
 then
