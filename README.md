@@ -3,7 +3,7 @@
 
 Another version of the legendary movie database. This time with NodeJS. The app
 is being deployed to Heroku after every push. Feel free to check it out:
-[http://movie-database-ccjavascriptteam2.herokuapp.com/](http://movie-database-ccjavascriptteam2.herokuapp.com/)!
+[http://movie-database-team2.herokuapp.com/](http://movie-database-team2.herokuapp.com/)!
 
 ## Travis-CI and Heroku
 
