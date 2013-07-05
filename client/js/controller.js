@@ -15,11 +15,6 @@ function MoviesListCtrl ($scope, $location, moviesResponse) {
         $location.path('/movies/new');
     };
     $scope.predicate = 'title';
-    $scope['delete'] = function () {
-        $http['delete']('/movies/' + $scope.movie.id).success(function (res) {
-            $location.path('/movies');
-        });
-    };
 }
 
 MoviesListCtrl.resolve = {
