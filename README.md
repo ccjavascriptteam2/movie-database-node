@@ -6,7 +6,7 @@ is being deployed to Heroku after every push. Feel free to check it out:
 [http://movie-database-team2.herokuapp.com/](http://movie-database-team2.herokuapp.com/)!
 
 ## Travis-CI and Heroku
-
+ 
 This project uses [Travis-CI](https://www.travis-ci.org/) for
 continuous integration. After every successfull build, the application
 is deployed automatically to [Heroku](https://www.heroku.com/).
