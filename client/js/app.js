@@ -49,7 +49,7 @@ angular.module('MovieDatabase', []).config(
         controller: ActorsAddCtrl,
         templateUrl: '/partial/actors/add.html'
     })
-    .when('/actor/:id', {
+    .when('/actors/:id', {
         controller: ActorDetailCtrl,
         resolve: ActorDetailCtrl.resolve,
         templateUrl: '/partial/actors/detail.html'
