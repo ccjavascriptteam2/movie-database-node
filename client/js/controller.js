@@ -41,8 +41,7 @@ function MovieDetailCtrl ($scope, $http, $location, moviesResponse) {
 
     $scope['delete'] = function () {
         $http['delete']('/movies/' + $scope.movie.id).success(function (res) {
-            // $location.path('/movies');
-            $scope.movie = {title: "deleted", description: "Test"};
+            $location.path('/movies');
         });
     };
 }
