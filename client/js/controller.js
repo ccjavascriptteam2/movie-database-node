@@ -3,7 +3,9 @@ function AppCtrl ($scope) {
     $scope.title = 'The Movie Database';
 }
 
-function WelcomeCtrl () {
+function WelcomeCtrl ($location) {
+    'use strict';
+    $location.path('/movies');
 }
 
 function MoviesListCtrl ($scope, $location, moviesResponse) {
