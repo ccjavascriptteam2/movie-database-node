@@ -10,6 +10,11 @@
         <tr ng-repeat="movie in movies | orderBy:predicate:reverse">
             <td>
                 <a href="#" ng-href="/movies/{{movie.id}}">
+                    <img src="https://helpdesk.datcom.ch/helpdesk/info_icon_small.gif" />
+                </a>
+            </td>
+            <td>
+                <a href="#" ng-href="/movies/{{movie.id}}">
                     {{movie.title}}
                 </a>
             </td>
