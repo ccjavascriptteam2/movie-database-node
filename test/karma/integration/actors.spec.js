@@ -2,7 +2,7 @@
 describe('Actors', function () {
     'use strict';
     var baseUrl = '/actors';
-    var addActorUrl = '/actors/new';
+    // var addActorUrl = '/actors/new';
 
     beforeEach(function () {
         var deleteActor = function () {
