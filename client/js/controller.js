@@ -71,8 +71,14 @@ MovieEditCtrl.resolve = {
     moviesResponse: movieDetailResolver
 };
 
+function ActorsListCtrl ($scope) {
+    'use strict';
+    // nothing to do yet
+}
+
 function NotFoundCtrl () {
 }
 
 function ErrorCtrl() {
 }
+
