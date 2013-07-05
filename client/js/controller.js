@@ -3,9 +3,9 @@ function AppCtrl ($scope) {
     $scope.title = 'The Movie Database';
 }
 
-function WelcomeCtrl ($location) {
+function WelcomeCtrl ($scope, $location, moviesResponse) {
     'use strict';
-    $location.path('/movies');
+    $scope.movies = moviesResponse.data;
 }
 
 function MoviesListCtrl ($scope, $location, moviesResponse) {
@@ -14,6 +14,7 @@ function MoviesListCtrl ($scope, $location, moviesResponse) {
     $scope.add = function () {
         $location.path('/movies/new');
     };
+    $scope.predicate = 'title';
 }
 
 MoviesListCtrl.resolve = {

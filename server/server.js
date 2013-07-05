@@ -8,5 +8,5 @@ var config = require('./config');
 neo4j.configureAutoIndex();
 
 http.createServer(app).listen(config.application.port, function () {
-    console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port: ' + app.get('port'));
 });
