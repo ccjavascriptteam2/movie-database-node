@@ -189,7 +189,7 @@ module.exports = function (grunt) {
             server.start(
                 data,
                 function(code) {
-                    done(code==0?true:false);
+                    done(!code);
                 });
         }
     });
