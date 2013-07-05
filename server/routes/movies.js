@@ -110,5 +110,49 @@ exports = module.exports = function (db) {
         });
     };
 
+    exports.getActorsForMovie = function (req, res) {
+        // fallback in case no movies are stored in the database
+        var nodes = nodes || [];
+
+        res.send(nodes);
+    };
+
+    exports.addActorForMovie = function (req, res) {
+        var movieId = req.params.id;
+        var actorId = req.body.actor;
+        console.log('about to add actor ' + actorId + ' to movie ' + movieId);
+        db.getIndexedNode('node_auto_index', 'id', movieId,
+               function (err, movieNode) {
+            if (err) {
+                console.error(err);
+                return res.status(500).send();
+            } else if (!movieNode) {
+                console.warn('could not find movie ' + movieId);
+                return res.status(404).send();
+            }
+            console.log('found movie ' + movieId);
+            db.getIndexedNode('node_auto_index', 'id', actorId,
+                function (err, actorNode) {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).send();
+                } else if (!actorNode) {
+                    console.warn('could not find actor ' + actorId);
+                    return res.status(404).send();
+                }
+                console.log('found actor ' + actorId);
+                movieNode.createRelationshipTo(actorNode, 'movieactor', {},
+                  function(err, savedRelationship) {
+                    if (err) {
+                        console.error(err);
+                        return res.status(500).send();
+                    }
+                    console.info('successfully added actor ' + actorId + ' to movie ' + movieId);
+                    res.status(201).send(savedRelationship.data);
+                });
+            });
+        });
+    };
+
     return exports;
 };

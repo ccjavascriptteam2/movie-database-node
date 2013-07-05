@@ -50,7 +50,10 @@ if ('development' === app.get('env')) {
 }
 
 var routes = require('./routes')();
+// welcome route
 app.get('/hello', routes.hello.sayHello);
+
+// movie related routes
 app.get('/movies', routes.movies.getMovies);
 app.post('/movies', routes.movies.addMovie);
 app.get('/movies/:id', routes.movies.getMovie);
@@ -58,10 +61,15 @@ app.put('/movies/:id', routes.movies.updateMovie);
 // delete is a reserved word
 app['delete']('/movies/:id', routes.movies.deleteMovie);
 
+// actor related routes
 app.get('/actors', routes.actors.getActors);
 app.post('/actors', routes.actors.addActor);
 app.get('/actors/:id', routes.actors.getActor);
 app.put('/actors/:id', routes.actors.updateActor);
 // delete is a reserved word
 app['delete']('/actors/:id', routes.actors.deleteActor);
+
+// routes for movie-actor relationship
+app.get('/movies/:id/actors', routes.movies.getActorsForMovie);
+app.post('/movies/:id/actors', routes.movies.addActorForMovie);
 
