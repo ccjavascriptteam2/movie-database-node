@@ -40,7 +40,6 @@ at the documented script [scripts/deploy-to-heroku.sh](scripts/deploy-to-heroku.
 
 ## Documentation
 
-
 You can find additional information about the used technologies in the `docs` directory.
 
 ## System requirements
