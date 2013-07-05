@@ -20,7 +20,7 @@ angular.module('MovieDatabase', []).config(
     .when('/movies', {
         controller: MoviesListCtrl,
         resolve: MoviesListCtrl.resolve,
-        templateUrl: '/partial/movies.html'
+        templateUrl: '/partial/movies/movies.html'
     })
     .when('/movies/new', {
         controller: MoviesAddCtrl,
