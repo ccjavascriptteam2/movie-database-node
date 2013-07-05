@@ -3,7 +3,9 @@ function AppCtrl ($scope) {
     $scope.title = 'The Movie Database';
 }
 
-function WelcomeCtrl () {
+function WelcomeCtrl ($scope, $location, moviesResponse) {
+    'use strict';
+    $scope.movies = moviesResponse.data;
 }
 
 function MoviesListCtrl ($scope, $location, moviesResponse) {
@@ -12,6 +14,7 @@ function MoviesListCtrl ($scope, $location, moviesResponse) {
     $scope.add = function () {
         $location.path('/movies/new');
     };
+    $scope.predicate = 'title';
 }
 
 MoviesListCtrl.resolve = {
@@ -38,7 +41,8 @@ function MovieDetailCtrl ($scope, $http, $location, moviesResponse) {
 
     $scope['delete'] = function () {
         $http['delete']('/movies/' + $scope.movie.id).success(function (res) {
-            $location.path('/movies');
+            // $location.path('/movies');
+            $scope.movie = {title: "deleted", description: "Test"};
         });
     };
 }

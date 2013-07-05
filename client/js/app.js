@@ -13,13 +13,14 @@ angular.module('MovieDatabase', []).config(
 
     $routeProvider
     .when('/', {
-        controller: WelcomeCtrl,
+        controller: MoviesListCtrl,
+        resolve: MoviesListCtrl.resolve,
         templateUrl: '/partial/index.html'
     })
     .when('/movies', {
         controller: MoviesListCtrl,
         resolve: MoviesListCtrl.resolve,
-        templateUrl: '/partial/movies/list.html'
+        templateUrl: '/partial/movies/movies.html'
     })
     .when('/movies/new', {
         controller: MoviesAddCtrl,
