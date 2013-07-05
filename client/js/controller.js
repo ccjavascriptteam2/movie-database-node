@@ -72,14 +72,72 @@ MovieEditCtrl.resolve = {
     moviesResponse: movieDetailResolver
 };
 
-function ActorsListCtrl ($scope) {
+function ActorsListCtrl ($scope, $location, actorsResponse) {
     'use strict';
-    // nothing to do yet
+    $scope.actors = actorsResponse.data;
+    $scope.add = function () {
+        $location.path('/actors/new');
+    };
+    $scope.predicate = 'name';
 }
+
+ActorsListCtrl.resolve = {
+    actorsResponse: function ($http) {
+        'use strict';
+        return $http.get('/actors');
+    }
+};
+
+function ActorsAddCtrl ($scope, $http, $location) {
+    'use strict';
+    $scope.actor = {};
+    $scope.save = function (actor) {
+        $http.post('/actors', actor)
+        .success(function(res) {
+            $location.path('/actors/' + res.id);
+        });
+    };
+}
+
+function ActorDetailCtrl ($scope, $http, $location, actorsResponse) {
+    'use strict';
+    $scope.actor = actorsResponse.data;
+
+    $scope['delete'] = function () {
+        $http['delete']('/actors/' + $scope.actor.id).success(function (res) {
+            $location.path('/actors');
+        });
+    };
+}
+
+function actorDetailResolver ($http, $route) {
+    'use strict';
+    var id = $route.current.params.id;
+    return $http.get('/actors/' + id);
+}
+
+ActorDetailCtrl.resolve = {
+    actorsResponse: actorDetailResolver
+};
+
+function ActorEditCtrl ($scope, $http, $location, actorsResponse) {
+    'use strict';
+    $scope.actor = actorsResponse.data;
+
+    $scope.save = function () {
+        $http.put('/actors/' + $scope.actor.id, $scope.actor)
+        .success(function (res) {
+            $location.path('/actors/' + $scope.actor.id);
+        });
+    };
+}
+
+ActorEditCtrl.resolve = {
+    actorsResponse: actorDetailResolver
+};
 
 function NotFoundCtrl () {
 }
 
 function ErrorCtrl() {
 }
-

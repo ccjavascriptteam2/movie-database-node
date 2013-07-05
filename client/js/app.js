@@ -6,6 +6,9 @@
   MovieDetailCtrl:false,
   MovieEditCtrl:false,
   ActorsListCtrl:false,
+  ActorsAddCtrl:false,
+  ActorEditCtrl:false,
+  ActorDetailCtrl:false,
   ErrorCtrl:false */
 
 angular.module('MovieDatabase', []).config(
@@ -39,7 +42,22 @@ angular.module('MovieDatabase', []).config(
     })
     .when('/actors', {
         controller: ActorsListCtrl,
-        templateUrl: '/partial/actors/list.html'
+        resolve: ActorsListCtrl.resolve,
+        templateUrl: '/partial/actors/actors.html'
+    })
+    .when('/actors/new', {
+        controller: ActorsAddCtrl,
+        templateUrl: '/partial/actors/add.html'
+    })
+    .when('/actor/:id', {
+        controller: ActorDetailCtrl,
+        resolve: ActorDetailCtrl.resolve,
+        templateUrl: '/partial/actors/detail.html'
+    })
+    .when('/actors/:id/edit', {
+        controller: ActorEditCtrl,
+        resolve: ActorEditCtrl.resolve,
+        templateUrl: '/partial/actors/edit.html'
     })
      .when('/404', {
         controller: NotFoundCtrl,
