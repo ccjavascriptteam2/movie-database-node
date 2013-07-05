@@ -73,7 +73,7 @@ exports = module.exports = function (db) {
     exports.addActor = function (req, res) {
         if (req.body.name == null || req.body.name == '' ) {
             console.error('Name not set ' + req.body);
-            return res.status(400).send('Error: Name not set');
+            return res.status(400).send('Error: name is mandatory');
         };
 
         var node = db.createNode(req.body);
